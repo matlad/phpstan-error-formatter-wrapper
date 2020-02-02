@@ -1,0 +1,11 @@
+parametersSchema:
+	wrappedErrorFormatters: arrayOf(structure([
+	    formatter:  string() # PHPStan\Command\ErrorFormatter\ErrorFormatter
+	    output: anyOf(string(),"null"())
+	]))
+
+services:
+	errorFormatter.wrapper:
+	    class: matla\phpstanEfw\ErrorFormatterWrapper
+	    arguments:
+	        errorFormatters: %wrappedErrorFormatters%
